@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
+import { TokenService } from '../../services/token.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-default',
@@ -31,12 +33,16 @@ export class DefaultComponent implements OnInit {
   isCollapsed = false;
   triggerTemplate: TemplateRef<void> | null = null;
   @ViewChild('trigger') customTrigger: TemplateRef<void>;
-  constructor() { }
+  constructor(private tokenservice: TokenService, private router: Router) { }
 
   ngOnInit() {
   }
   // /** custom trigger can be TemplateRef **/
   changeTrigger(): void {
     this.triggerTemplate = this.customTrigger;
+  }
+  outLogin(): void {
+    this.tokenservice.clearToken();
+    this.router.navigate(['/login']);
   }
 }

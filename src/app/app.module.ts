@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { NgZorroAntdModule, NZ_I18N, zh_CN } from 'ng-zorro-antd';
 import { SharedModule } from './shared/shared.module';
+import { ServiceModule } from './services/service.module';
 
 // /** 配置 angular i18n **/
 import { registerLocaleData } from '@angular/common';
@@ -26,6 +27,7 @@ import { AppComponent } from './app.component';
     LayoutModule,
     RoutesModule,
     SharedModule,
+    ServiceModule,
     NgZorroAntdModule
   ],
   providers: [{ provide: NZ_I18N, useValue: zh_CN }],
