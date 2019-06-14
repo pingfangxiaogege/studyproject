@@ -7,7 +7,7 @@ export class LoginService {
     constructor(private http: HttpClient) {
 
     }
-    getToken() {
-       return this.http.get('/login');
+    login(param) {
+       return this.http.post('/user/login', param);
     }
 }

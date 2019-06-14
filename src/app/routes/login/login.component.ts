@@ -12,6 +12,7 @@ import { LoginService } from './login.service';
 })
 export class LoginComponent implements OnInit {
   validateForm: FormGroup;
+  isLoadingOne = false;
   constructor(
     private fb: FormBuilder,
     private msg: NzMessageService,
@@ -38,19 +39,19 @@ export class LoginComponent implements OnInit {
       this.validateForm.controls[i].markAsDirty();
       this.validateForm.controls[i].updateValueAndValidity();
     }
+    this.isLoadingOne = true;
     if (this.validateForm.status === 'VALID') {
-      if (this.formValue('userName') !== 'admin') {
-        this.msg.error('您输入的用户名不存在！');
-      } else if (this.formValue('password') !== '1234') {
-        this.msg.error('您密码输入不正确！');
-      } else {
-        this.serve.getToken().subscribe( res => {
+        const param = new FormData();
+        param.append('username', this.validateForm.value.userName);
+        param.append('password', this.validateForm.value.password);
+        this.serve.login(param).subscribe( (res: any) => {
           console.log(res, 'ras')
-        })
-        this.tokenservice.saveToken('a');
-      }
+          this.tokenservice.saveToken(res.value.token);
+          this.router.navigate(['home']);
+          this.msg.success('登录成功');
+          this.isLoadingOne = false;
+        });
     }
-    
   }
 
 }

@@ -8,6 +8,30 @@ import { Router } from '@angular/router';
   styles: [
     ` :host ::ng-deep{
       height: 100%;
+      width: 100%;
+      position: absolute;
+      display: block;
+    }
+    .top {
+      width: 100%;
+      height: 50px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: #1890ff;
+    }
+    .side{
+      width: 200px;
+      min-height: 100%;
+      position: fixed;
+      top: 50px;
+      left: 0;
+    }
+    .content {
+      margin-top: 50px;
+      margin-left: 200px;
+      min-height: 100%;
+      padding: 20px;
     }
       .trigger {
         font-size: 18px;
@@ -27,7 +51,7 @@ import { Router } from '@angular/router';
         margin: 16px;
       }
     `
-  ]
+  ],
 })
 export class DefaultComponent implements OnInit {
   isCollapsed = false;

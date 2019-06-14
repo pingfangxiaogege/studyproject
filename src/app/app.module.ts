@@ -15,6 +15,10 @@ import zh from '@angular/common/locales/zh';
 registerLocaleData(zh);
 import { AppComponent } from './app.component';
 
+// l拦截器
+import { DefaultInterceptor } from './core/default.interceptor';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -30,7 +34,10 @@ import { AppComponent } from './app.component';
     ServiceModule,
     NgZorroAntdModule
   ],
-  providers: [{ provide: NZ_I18N, useValue: zh_CN }],
+  providers: [
+    { provide: NZ_I18N, useValue: zh_CN },
+    { provide: HTTP_INTERCEPTORS, useClass: DefaultInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
