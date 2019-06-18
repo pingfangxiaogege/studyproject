@@ -1,6 +1,6 @@
 <div style="width: 100%;">
   <ul nz-menu [nzMode]="'inline'" nzTheme="dark" [nzInlineCollapsed]="isCollapsed">
-    <li nz-menu-item nz-tooltip nzPlacement="right" [nzTitle]="isCollapsed ? '首页' : ''">
+    <li nz-menu-item nz-tooltip nzPlacement="right"  routerLink='/home' [nzTitle]="isCollapsed ? '首页' : ''">
       <span title>
         <i nz-icon type="home"></i>
         <span>首页</span>
@@ -51,7 +51,7 @@
         <span>Angular</span>
       </span>
       <ul>
-        <li nz-menu-item>Option 9</li>
+        <li nz-menu-item routerLink='/ng-basic'>基础知识</li>
         <li nz-menu-item>Option 10</li>
         <li nz-menu-item>Option 11</li>
       </ul>

@@ -4,7 +4,14 @@ import { SharedModule } from '../shared/shared.module';
 import { RouterModuleRouting } from './routes.routing.module';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { NgComponent } from './ng/ng.component';
 import { LoginService } from './login/login.service';
+
+const Comp = [
+  NgComponent,
+  HomeComponent,
+  LoginComponent
+];
 
 @NgModule({
   imports: [
@@ -14,6 +21,6 @@ import { LoginService } from './login/login.service';
   ],
   exports: [],
   providers: [LoginService],
-  declarations: [HomeComponent, LoginComponent]
+  declarations: [...Comp]
 })
 export class RoutesModule { }

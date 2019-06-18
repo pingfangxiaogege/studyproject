@@ -19,6 +19,7 @@ import { Router } from '@angular/router';
       top: 0;
       left: 0;
       background: #1890ff;
+      z-index: 999;
     }
     .side{
       width: 200px;
@@ -30,7 +31,6 @@ import { Router } from '@angular/router';
     .content {
       margin-top: 50px;
       margin-left: 200px;
-      min-height: 100%;
       padding: 20px;
     }
       .trigger {

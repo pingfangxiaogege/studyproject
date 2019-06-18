@@ -1,0 +1,63 @@
+<nz-layout>
+    <nz-content>
+      <nz-card nzTitle="angular官网地址">
+        <a href='https://angular.cn/guide/quickstart' target='_blank'>https://angular.cn/guide/quickstart</a>
+       </nz-card>
+       <nz-card nzTitle="新建项目">
+            <nz-steps [nzCurrent]="current">
+              <nz-step nzTitle="项目环境准备"></nz-step>
+              <nz-step nzTitle="脚手架安装"></nz-step>
+              <nz-step nzTitle="创建项目"></nz-step>
+              <nz-step nzTitle="启动项目"></nz-step>
+            </nz-steps>
+        
+            <div class="steps-content p-20">
+                <ul *ngIf='current === 0' >
+                  <li>
+                    在开始之前，请确保你的开发环境已经包含了 Node.js® 和 npm 包管理器，Angular 需要 Node.js 的 8.x 或 10.x 版本。
+                  </li>
+                  <li>
+                    要想检查你的版本，请在终端/控制台窗口中运行 node -v 命令。
+                  </li>
+                  <li>
+                    要想安装 Node.js，请访问<a href='https://nodejs.org/en/'> nodejs.org</a>。
+                  </li>
+                </ul>
+                <ul *ngIf='current === 1' >
+                  <li>
+                    安装完node之后，检查npm包管理器是否安装，使用npm -v 命令检查。
+                  </li>
+                  <li>
+                   全局安装脚手架cli， npm install -g @angular/cli
+                  </li>
+                  <li>
+                    使用 Angular CLI 来创建项目、创建应用和库代码，并执行多种开发任务，比如测试、打包和发布。
+                  </li>
+                </ul>
+                <ul *ngIf='current === 2'>
+                  <li>
+                    运行 CLI 命令 ng new，并提供一个名字 my-app： ng new my-app
+                  </li>
+                  <li>
+                      ng new 会提示你要把哪些特性包含在初始的应用项目中。请按回车键接受默认值。<br>
+                      如果需要引入less样式， 需要加上--style less,  ng new my-app --style less
+                  </li>
+                </ul>
+                <ul *ngIf='current === 3'>
+                  <li>现在项目已经创建，进入创建的项目目录cd my-app</li>
+                  <li>进行依赖安装npm i (也可以用yarn， cnpm)</li>
+                  <li>使用ng serve -o 启动项目</li>
+                  <li>到这里项目就创建完毕了</li>
+                </ul>
+            </div>
+            <div class="steps-action" class='text-right'>
+              <button nz-button nzType="default" (click)="pre()" *ngIf="current > 0">
+                <span>Previous</span>
+              </button>
+              <button nz-button nzType="default" (click)="next()" *ngIf="current < 3">
+                <span>Next</span>
+              </button>
+            </div>
+       </nz-card>
+    </nz-content>
+</nz-layout>
