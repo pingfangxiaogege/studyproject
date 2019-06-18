@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-side',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./side.component.css']
 })
 export class SideComponent implements OnInit {
+  @Input() isCollapsed: boolean;
   constructor() { }
 
   ngOnInit() {

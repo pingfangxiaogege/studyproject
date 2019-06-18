@@ -1,8 +1,8 @@
 <div class='top'>
-    <app-top></app-top>
+    <app-top (collapsedChange)='getCollapsed($event)'></app-top>
 </div>
 <div class='side'>
-    <app-side class='h-100'></app-side>
+    <app-side class='h-100' [isCollapsed]='isCollapsed'></app-side>
 </div>
 <div class='content'>
     <router-outlet></router-outlet>

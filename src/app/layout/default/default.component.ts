@@ -69,4 +69,7 @@ export class DefaultComponent implements OnInit {
     this.tokenservice.clearToken();
     this.router.navigate(['/login']);
   }
+  getCollapsed($event) {
+    this.isCollapsed = $event;
+  }
 }

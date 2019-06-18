@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-top',
@@ -7,12 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopComponent implements OnInit {
   isCollapsed = false;
+  @Output() collapsedChange: EventEmitter<any> = new EventEmitter();
   constructor() { }
 
   ngOnInit() {
   }
   toggleCollapsed(): void {
     this.isCollapsed = !this.isCollapsed;
+    this.collapsedChange.emit(this.isCollapsed);
   }
 
 }
