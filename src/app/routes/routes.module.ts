@@ -5,6 +5,8 @@ import { RouterModuleRouting } from './routes.routing.module';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { NgComponent } from './ng/ng.component';
+
+import { HomeService } from './home/home.service';
 import { LoginService } from './login/login.service';
 
 const Comp = [
@@ -20,7 +22,7 @@ const Comp = [
     RouterModuleRouting
   ],
   exports: [],
-  providers: [LoginService],
+  providers: [LoginService, HomeService],
   declarations: [...Comp]
 })
 export class RoutesModule { }

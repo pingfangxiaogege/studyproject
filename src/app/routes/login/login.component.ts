@@ -45,10 +45,13 @@ export class LoginComponent implements OnInit {
         param.append('username', this.validateForm.value.userName);
         param.append('password', this.validateForm.value.password);
         this.serve.login(param).subscribe( (res: any) => {
-          console.log(res, 'ras')
-          this.tokenservice.saveToken(res.value.token);
-          this.router.navigate(['home']);
-          this.msg.success('登录成功');
+          if (res.status === 0) {
+            this.tokenservice.saveToken(res.token);
+            this.router.navigate(['home']);
+            this.msg.success('登录成功');
+          } else {
+            this.msg.error(res.message);
+          }
           this.isLoadingOne = false;
         });
     }

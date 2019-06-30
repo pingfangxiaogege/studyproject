@@ -14,12 +14,22 @@ export class DefaultInterceptor implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         // 统一加上服务端前缀
         let urls = req.url;
+        const authToken = localStorage.getItem('pf_token');
+        console.log( req.url)
         if (!urls.startsWith('https://') && !urls.startsWith('http://')) {
             urls = environment.baseUrl + urls;
         }
-        const newReq = req.clone({
-            url: urls,
-        });
+        let newReq;
+        if (req.url !== '/user/login') {
+            newReq = req.clone({
+                headers:  req.headers.set("Authorization", 'Bearer ' + authToken),
+                url: urls,
+            });
+        } else {
+            newReq = req.clone({
+                url: urls,
+            });
+        }
         console.log(newReq.url);
         return next.handle(newReq).pipe(
             mergeMap((event: any) => {
@@ -35,7 +45,7 @@ export class DefaultInterceptor implements HttpInterceptor {
         switch (event.status) {
           case 401:
             console.log('not login') ;
-            this.router.navigate(['/']);
+            this.router.navigate(['/login']);
             return of(event) ;
           default:
         }
