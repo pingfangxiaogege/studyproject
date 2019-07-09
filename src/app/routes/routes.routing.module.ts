@@ -14,7 +14,15 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: HomeComponent, data: {title: '主页'} },
-      { path: 'ng-basic', component: NgComponent, data: {title: 'angular'} }
+      { path: 'ng-basic', component: NgComponent, data: {title: 'angular'} },
+      {
+        path: 'css',
+        loadChildren: './css/css.module#CssModule'
+      },
+      {
+        path: 'markdown',
+        loadChildren: './markdown/markdown.module#MarkdownModule'
+      }
     ]
   },
   {
